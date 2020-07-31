@@ -1,0 +1,73 @@
+/*    
+		Author : Saurav Lal
+				{ Love in Experiences :-) }
+*/
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#define fi first
+#define se second
+#define pb push_back
+#define ppb pop_back
+#define pii pair<int, int> 
+#define all(a) a.begin(), a.end()
+#define allr(a) a.rbegin(),a.rend()
+#define int long long
+#define ll long long
+#define vi vector<int>
+#define vip vector<pii>
+#define mod1 998244353
+#define mod 1000000009
+#define endl "\n"
+#define loop(i,a,b) for(int i=a;i<b;i++)
+#define bloop(i,a,b) for(int i=a;i>=b;i--)
+#define testcase  int t; cin>>t; while(t--) 
+#define vii(v,n,m,a) vector<vector<int>>v(n,vi(m,a))
+#define FIO ios_base::sync_with_stdio(false);  cin.tie(NULL);
+
+using namespace __gnu_pbds; 
+using namespace std;
+
+int max(int a, int b) { return (a > b)? a : b; } 
+
+int min(int a, int b) { return (a < b)? a : b; }
+
+
+   
+/*************************************************************************/
+
+vi dp(1000010,-1);
+
+int solve(int n){
+	if(n<0)
+		return 0;
+	if(dp[n]!=-1)
+		return dp[n];
+	if(n==1) {
+		dp[n]=0;
+		return dp[n];
+	}
+	if(n==0){
+		dp[n]=1;
+		return dp[n];
+	}
+	dp[n] = (solve(n-2)%mod + solve(n-3)%mod)%mod;
+	return dp[n]%mod ;	
+}
+
+
+int32_t main() {
+	
+	FIO
+	solve(1000005);
+	testcase
+	{
+		int n;
+		cin>>n;
+		// for(int i=0;i<=n+1;i++)
+		// dp[i]=-1;
+		// in;
+		cout<<dp[n]%mod<<endl;
+	}
+	return 0;
+}
