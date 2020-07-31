@@ -1,0 +1,71 @@
+/*    
+		Author : Saurav Lal
+				{ Love in Experiences :-) }
+*/
+
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#define fi first
+#define se second
+#define pb push_back
+#define ppb pop_back
+#define pii pair<int, int> 
+#define all(a) a.begin(), a.end()
+#define allr(a) a.rbegin(),a.rend()
+#define int long long
+#define ll long long
+#define vi vector<int>
+#define vip vector<pii>
+#define mod1 998244353
+#define mod 1000000007
+#define endl "\n"
+#define loop(i,a,b) for(int i=a;i<b;i++)
+#define bloop(i,a,b) for(int i=a;i>=b;i--)
+#define testcase  int t; cin>>t; while(t--) 
+#define vii(v,n,m,a) vector<vector<int>>v(n,vi(m,a))
+#define FIO ios_base::sync_with_stdio(false);  cin.tie(NULL);
+
+using namespace __gnu_pbds; 
+using namespace std;
+
+int max(int a, int b) { return (a > b)? a : b; } 
+
+int min(int a, int b) { return (a < b)? a : b; }
+
+
+   
+/*************************************************************************/
+
+vi dp(100005,0),v,total(100005,1);
+
+void primeno(){
+	
+	for(int i=2;i<=100005;i++){
+		if(dp[i]==0){
+			for(int j=2*i;j<=100005;j+=i){
+				dp[j]++;
+			}
+		}
+	}
+	loop(i,2,100005)
+		if(dp[i]==0)
+			dp[i]=1;
+}
+
+int32_t main() {
+	
+	FIO
+	primeno();
+	testcase
+	{
+		int a,b,k,cnt=0;
+		cin>>a>>b>>k;
+		for(int i=a;i<=b;i++){
+			if(dp[i]==k){
+				cnt++;
+			}
+		}
+		cout<<cnt<<endl;
+	}
+	return 0;
+}
